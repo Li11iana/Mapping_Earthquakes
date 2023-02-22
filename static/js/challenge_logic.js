@@ -45,15 +45,15 @@ let baseMaps = {
 
 //Add a 2nd layer group for all earthquakes, tectonic plates and major earthquakes.
 let allEarthquakes = new L.LayerGroup();
-let tectPlates = new L.LayerGroup();
-let majEarthquakes = new L.LayerGroup();
+let tectonicPlates = new L.LayerGroup();
+let majorEarthquakes = new L.LayerGroup();
 
 
 //Add a reference to the layer groups to the overlays object.
 let overlays = {
   "Earthquakes": allEarthquakes,
-  "Tectonic Plates": tectPlates,
-  "Major Earthquakes": majEarthquakes
+  "Tectonic Plates": tectonicPlates,
+  "Major Earthquakes": majorEarthquakes
 };
 
 // Then we add a control to the map that will allow the user to change which
@@ -173,10 +173,10 @@ L.geoJSON(data, {
    onEachFeature: function(feature, layer) {
     layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
   }
-}).addTo(majEarthquakes);
+}).addTo(majorEarthquakes);
 
 //Add the major earthquakes layer to the map
-majEarthquakes.addTo(map)
+majorEarthquakes.addTo(map)
 
 //Close the parentheses for the major earthquakes d3
 });
@@ -220,9 +220,9 @@ legend.onAdd = function() {
     L.geoJSON(data, {
       color: "#ff0000",
       weight: 2
-    }).addTo(tectPlates);
+    }).addTo(tectonicPlates);
     // Add the layer to the map
-    tectPlates.addTo(map);
+    tectonicPlates.addTo(map);
   });
 
 });
